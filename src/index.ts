@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+const chalk = require("chalk");
+const clear = require("clear");
+const figlet = require("figlet");
+const argv = require("minimist")(process.argv.slice(2));
+const config = require("./config");
+
+console.log(
+  chalk.yellow(
+    figlet.textSync("do - and remember", { horizontalLayout: "full" })
+  )
+);
+config.getDoFile();
+
+
+if (argv["s"]) {
+  console.log("show stats");
+} else if (argv["r"]) {
+  console.log("show report");
+} else if (argv["a"]) {
+  console.log("show everything");
+} else if (argv["_"].length > 0) {
+  console.log(argv["_"]);
+} else {
+  console.log("show all tasks!!");
+}

@@ -1,0 +1,38 @@
+{
+  "name": "@technovangelist/do",
+  "bin": "./lib/index.js",
+  "version": "0.0.1",
+  "description": "something to help me remember what I did",
+  "keywords": [
+    "todo",
+    "standup"
+  ],
+  "author": {
+    "name": "Matt Williams",
+    "email": "m@technovangelist.com",
+    "url": "http://tvl.st/"
+  },
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "clear": "^0.1.0",
+    "clui": "^0.3.6",
+    "configstore": "^5.0.0",
+    "figlet": "^1.2.4",
+    "inquirer": "^7.0.0",
+    "lodash": "^4.17.15",
+    "minimist": "^1.2.0"
+  },
+  "scripts": {
+    "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "create": "npm run build && npm run test",
+    "build": "tsc -p .",
+    "test": "sudo npm i -g && do",
+    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.7",
+    "nodemon": "^1.19.4",
+    "ts-node": "^8.5.0",
+    "typescript": "^3.7.2"
+  }
+}
