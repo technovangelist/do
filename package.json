@@ -1,7 +1,7 @@
 {
   "name": "@technovangelist/do",
   "bin": "./lib/index.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/technovangelist/do.git"
@@ -34,7 +34,6 @@
     "start": "nodemon -e 'src/**/*.ts' --exec 'npm run build'",
     "create": "npm run build && npm run test",
     "build": "tsc",
-    "test": "sudo npm i -g && do",
     "refresh": "rm -rf ./node_modules ./package-lock.json && npm install"
   },
   "devDependencies": {

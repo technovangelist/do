@@ -18,3 +18,8 @@ Essentially, you are creating a list of things you are going to do. Then you mar
 `do` - show an interactive list of tasks added to today and yesterday that you haven't marked as done. You might not have completed the task, but you did in fact do some work on it. 
 
 `do -r` - show the report.
+
+## But `do` does something special in my shell and this doesn't work
+
+If you are using **bash** or **zsh** then `do` does something useful and won't run my tool. My suggestion is to upgrade to a modern shell like **fish**. Otherwise create an alias to something like `d`. In fact, using `d` on its own is pretty cool:
+  ```alias d=/usr/local/bin/do```
