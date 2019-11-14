@@ -1,5 +1,5 @@
 const Config = require("conf")
-const conf = new Config()
+const conf = new Config("technovangelistdo")
 
 export const getDoFile = () => {
   let doFile = conf.get("doFile");
