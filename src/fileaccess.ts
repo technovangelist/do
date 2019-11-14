@@ -4,7 +4,6 @@ const config = require("./config");
 const checkFileExists = () => {
   return new Promise((resolve, reject) => {
     const doFile = config.getDoFile()
-    console.log(doFile)
     if (fs.existsSync(doFile)) {
       resolve(doFile);
     } else {
