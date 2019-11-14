@@ -9,7 +9,15 @@ module.exports = {
     return conf.get("DoFile");
   },
 
-  setDoFile: (filename = "~/dofile.json") => {
+  setDoFile: (filename = "/Users/matt.williams/dofile.json") => {
     conf.set("DoFile", filename);
+  }, 
+
+  getConfig: () => {
+    let config = {
+      "doFile": "/Users/matt.williams/dofile.json"
+    }
+
+    return config;
   }
 };
