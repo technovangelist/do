@@ -1,7 +1,12 @@
 {
   "name": "@technovangelist/do",
   "bin": "./lib/index.js",
-  "version": "0.0.4",
+  "version": "0.0.7",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/technovangelist/do.git"
+  },
+  "homepage": "https://github.com/technovangelist/do",
   "description": "something to help me remember what I did",
   "keywords": [
     "todo",
@@ -15,6 +20,7 @@
   "dependencies": {
     "chalk": "^3.0.0",
     "clear": "^0.1.0",
+    "clipboardy": "^2.1.0",
     "clui": "^0.3.6",
     "configstore": "^5.0.0",
     "figlet": "^1.2.4",

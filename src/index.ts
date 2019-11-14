@@ -9,7 +9,7 @@ const inquirer = require("inquirer");
 const argv = require("minimist")(process.argv.slice(2));
 const tasktools = require("./tasks");
 const {DateTime} = require("luxon");
-
+// const clipboardy = require('clipboardy');
 console.log(
   chalk.yellow(
     figlet.textSync("do - and remember", { horizontalLayout: "full" })
@@ -32,8 +32,9 @@ if (argv["s"]) {
         let today = DateTime.local().toISODate();
         return theTask.addDate === today
       });
-      console.log(`1) ${doneYesterday.map(item => item.content)}`);
-      console.log(`2) ${doingToday.map(item => item.content)}`);
+      let output = `1) ${doneYesterday.map(item => item.content)}\n2) ${doingToday.map(item => item.content)}`
+      console.log(output);
+      // clipboardy.write(output);
     })
 } else if (argv["a"]) {
   console.log("show everything");
