@@ -1,18 +1,11 @@
 #!/usr/bin/env node
 
-const chalk = require("chalk");
 const clear = require("clear");
 const figlet = require("figlet");
 const inquirer = require("inquirer");
 const argv = require("minimist")(process.argv.slice(2));
 const tasktools = require("./tasks");
 const {DateTime} = require("luxon");
-// const clipboardy = require('clipboardy');
-console.log(
-  chalk.yellow(
-    figlet.textSync("do - and remember", { horizontalLayout: "full" })
-  )
-)
 
 
 

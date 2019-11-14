@@ -1,5 +1,5 @@
-const Config = require("conf")
-const conf = new Config("technovangelistdo")
+const Config = require("conf");
+const conf = new Config({projectName:"technovangelistdo"});
 
 export const getDoFile = () => {
   let doFile = conf.get("doFile");
