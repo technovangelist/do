@@ -33,11 +33,12 @@ export const saveTasks =(tasks) => {
 export const addTaskToToday = (newtask, today) => {
   return new Promise((resolve, reject) => {
       const dateadded = today ? DateTime.local().toISODate() : DateTime.local().minus({days: 1}).toISODate();
+      const didit = today ? false : true;
       console.log(dateadded)
       fa.getDo()
         .then( (tasks) => {
 
-            tasks.push({'content': newtask, 'addDate': dateadded, 'didit': false, 'id': uuid()})
+            tasks.push({'content': newtask, 'addDate': dateadded, 'didit': didit, 'id': uuid()})
             console.log(`Added: ${newtask}`);
             fa.writeDo(tasks);
             resolve("successfully added task")

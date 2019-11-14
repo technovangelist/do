@@ -1,7 +1,7 @@
 {
   "name": "@technovangelist/do",
   "bin": "./lib/index.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "something to help me remember what I did",
   "keywords": [
     "todo",
