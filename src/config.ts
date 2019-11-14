@@ -1,23 +1,11 @@
-import { monitorEventLoopDelay } from "perf_hooks";
+const Config = require("conf")
+const conf = new Config()
 
-const ConfigStore = require("configstore");
-const pkg = require("../package.json");
-const conf = new ConfigStore(pkg.name);
-
-module.exports = {
-  getDoFile: () => {
-    return conf.get("DoFile");
-  },
-
-  setDoFile: (filename = "/Users/matt.williams/dofile.json") => {
-    conf.set("DoFile", filename);
-  }, 
-
-  getConfig: () => {
-    let config = {
-      "doFile": "/Users/matt.williams/dofile.json"
-    }
-
-    return config;
+export const getDoFile = () => {
+  let doFile = conf.get("doFile");
+  if (!doFile) {
+    const homedir = require('os').homedir()
+    conf.set('doFile', `${homedir}/dofile.json`)
   }
-};
+  return conf.get("doFile");
+}

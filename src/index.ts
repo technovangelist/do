@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import { writeDo } from "./fileaccess";
-
 const chalk = require("chalk");
 const clear = require("clear");
 const figlet = require("figlet");

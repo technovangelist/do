@@ -1,15 +1,17 @@
 const fs = require("fs");
-const config = require("./config").getConfig();
+const config = require("./config");
 
 const checkFileExists = () => {
   return new Promise((resolve, reject) => {
-    if (fs.existsSync(config.doFile)) {
-      resolve(config.doFile);
+    const doFile = config.getDoFile()
+    console.log(doFile)
+    if (fs.existsSync(doFile)) {
+      resolve(doFile);
     } else {
-      fs.writeFileSync(config.doFile, JSON.stringify([]), err => {
+      fs.writeFileSync(doFile, JSON.stringify([]), err => {
         reject(err);
       });
-      resolve(config.doFile);
+      resolve(doFile);
     }
   })
 }
@@ -30,7 +32,7 @@ export const getDo = () => {
 
 export const writeDo = (tasks) => {
   return new Promise((resolve, reject) => {
-    fs.writeFileSync(config.doFile, JSON.stringify(tasks), err => {
+    fs.writeFileSync(config.getDoFile(), JSON.stringify(tasks), err => {
       reject(err);
     });
     resolve("tasks written");
