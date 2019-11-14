@@ -1,5 +1,5 @@
 # do
-Do is a tool to help me get better at standup. Where I work, we do standup everyday. The main part of standup is a slack channel where we post our status:
+**Do** is a tool to help me get better at standup. Where I work, we do standup everyday. The main part of standup is a slack channel where we post our status:
 
   1) what we did yesterday
   2) what we are going to do today
@@ -17,7 +17,7 @@ Essentially, you are creating a list of things you are going to do. Then you mar
 
 `do` - show an interactive list of tasks added to today and yesterday that you haven't marked as done. You might not have completed the task, but you did in fact do some work on it. 
 
-`do -r` - show the report.
+`do -r` - show the report and copy it to the clipboard for easy pasting into **slack**.
 
 ## But `do` does something special in my shell and this doesn't work
 
