@@ -8,7 +8,7 @@ const figlet = require("figlet");
 const inquirer = require("inquirer");
 const argv = require("minimist")(process.argv.slice(2));
 const tasktools = require("./tasks");
-
+const {DateTime} = require("luxon");
 
 console.log(
   chalk.yellow(
@@ -22,38 +22,49 @@ if (argv["s"]) {
   console.log("show stats");
 } else if (argv["r"]) {
   console.log("show report");
+  tasktools.getTasks()
+    .then(tasks => {
+      let doneYesterday = tasks.filter(theTask => {
+        let yesterday = DateTime.local().minus({days: 1}).toISODate();
+        return theTask.addDate === yesterday && theTask.didit === true
+      });
+      let doingToday = tasks.filter(theTask => {
+        let today = DateTime.local().toISODate();
+        return theTask.addDate === today
+      });
+      console.log(`1) ${doneYesterday.map(item => item.content)}`);
+      console.log(`2) ${doingToday.map(item => item.content)}`);
+    })
 } else if (argv["a"]) {
   console.log("show everything");
 } else if (argv["_"].length > 0) {
   // add a task
-  tasktools.addTaskToToday(argv["_"].join(" "));
+  tasktools.addTaskToToday(argv["_"].join(" "), !argv["y"]);
 } else {
   //show all tasks
   tasktools.getTasks()
     .then( tasks => {
-      let incompleteTasks = tasks.filter(theTask => {
-        return theTask.complete ==false
+      let undoneTasks = tasks.filter(theTask => {
+        return theTask.didit ==false
       });
-      if (incompleteTasks.length>0) {
+      if (undoneTasks.length>0) {
       inquirer
         .prompt([
           {
             type: "checkbox", 
-            choices: tasks.filter(theTask => {
-              return theTask.complete ==false
-            }).map(theTask => {
+            choices: undoneTasks.map(theTask => {
               let tObj = {};
               tObj['value'] = theTask.id;
-              tObj['name'] = theTask.content;
+              tObj['name'] = `${theTask.content}: (${theTask.addDate})`;
               return tObj;
             }), 
             name: "tasks", 
-            message: "What tasks have you completed?"
+            message: "What tasks did you do?"
           }
         ])
         .then(answers => {
           answers['tasks'].forEach(answer => {
-            tasks.find(x => x.id === answer).complete = true;
+            tasks.find(x => x.id === answer).didit = true;
           });
           tasktools.saveTasks(tasks);
           
