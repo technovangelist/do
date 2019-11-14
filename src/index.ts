@@ -6,13 +6,12 @@ const inquirer = require("inquirer");
 const argv = require("minimist")(process.argv.slice(2));
 const tasktools = require("./tasks");
 const {DateTime} = require("luxon");
-
+const clipboardy = require("clipboardy");
 
 
 if (argv["s"]) {
-  console.log("show stats");
+  console.log(" this will show stats at some point");
 } else if (argv["r"]) {
-  console.log("show report");
   tasktools.getTasks()
     .then(tasks => {
       let doneYesterday = tasks.filter(theTask => {
@@ -23,12 +22,12 @@ if (argv["s"]) {
         let today = DateTime.local().toISODate();
         return theTask.addDate === today
       });
-      let output = `1) ${doneYesterday.map(item => item.content)}\n2) ${doingToday.map(item => item.content)}`
+      let output = `1) ${doneYesterday.map(item => item.content)}\n2) ${doingToday.map(item => item.content)}\n3) `
       console.log(output);
-      // clipboardy.write(output);
+      clipboardy.write(output);
     })
 } else if (argv["a"]) {
-  console.log("show everything");
+  console.log("this will show everything at some point. not sure what everything means");
 } else if (argv["_"].length > 0) {
   // add a task
   tasktools.addTaskToToday(argv["_"].join(" "), !argv["y"]);
@@ -63,5 +62,4 @@ if (argv["s"]) {
         })
       }
     })
-  // console.log(JSON.stringify(dotasks))
 }
