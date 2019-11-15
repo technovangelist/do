@@ -12,13 +12,13 @@ if (argv["s"]) {
     .then(tasks => {
       let doneYesterday = tasks.filter(theTask => {
         let yesterday = DateTime.local().minus({days: 1}).toISODate();
-        return theTask.addDate === yesterday && theTask.didit === true
+        return theTask.addDate === yesterday && theTask.didit === true;
       });
       let doingToday = tasks.filter(theTask => {
         let today = DateTime.local().toISODate();
-        return theTask.addDate === today
+        return theTask.addDate === today;
       });
-      let output = `1) ${doneYesterday.map(item => item.content).join(", ")}\n2) ${doingToday.map(item => item.content).join(", ")}\n3) `
+      let output = `1) ${doneYesterday.map(item => item.content).join(", ")}\n2) ${doingToday.map(item => item.content).join(", ")}\n3) `;
       console.log(output);
       clipboardy.write(output);
     })
