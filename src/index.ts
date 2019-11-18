@@ -22,9 +22,9 @@ if (argv["s"]) {
       console.log(doneYesterday);
       let doingToday = tasks.filter(theTask => {
         let today = DateTime.local().toISODate();
-        return theTask.addDate === today
+        return theTask.addDate === today;
       });
-      let output = `1) ${doneYesterday.map(item => item.content).join(", ")}\n2) ${doingToday.map(item => item.content).join(", ")}\n3) `
+      let output = `1) ${doneYesterday.map(item => item.content).join(", ")}\n2) ${doingToday.map(item => item.content).join(", ")}\n3) `;
       console.log(output);
       output; 
       clipboardy.write(output); 
