@@ -23,3 +23,7 @@ Essentially, you are creating a list of things you are going to do. Then you mar
 
 If you are using **bash** or **zsh** then `do` does something useful and won't run my tool. My suggestion is to upgrade to a modern shell like **fish**. Otherwise create an alias to something like `d`. In fact, using `d` on its own is pretty cool:
   ```alias d=/usr/local/bin/do```
+
+# Revision History
+
+**0.1.7** - today on a weekend is now a friday. Yesterday on a Sunday or Monday is now a friday.\
