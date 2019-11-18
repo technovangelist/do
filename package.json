@@ -33,6 +33,7 @@
     "refresh": "rm -rf ./node_modules ./package-lock.json && npm install"
   },
   "devDependencies": {
+    "@types/mocha": "^5.2.7",
     "@types/node": "^12.12.7",
     "nodemon": "^1.19.4",
     "ts-node": "^8.5.0",

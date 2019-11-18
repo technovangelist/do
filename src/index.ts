@@ -2,34 +2,42 @@
 const inquirer = require("inquirer");
 const argv = require("minimist")(process.argv.slice(2));
 const tasktools = require("./tasks");
-const {DateTime} = require("luxon");
-const clipboardy = require("clipboardy");
-
+const {DateTime} = require("luxon"); 
+const clipboardy = require("clipboardy"); 
+tasktools.getTasks(); 
 if (argv["s"]) {
-  console.log(" this will show stats at some point");
+  console.log(" this will show stats at some point"); 
 } else if (argv["r"]) {
-  tasktools.getTasks()
+  tasktools.getTasks()  
     .then(tasks => {
+      const weekdaydiff = [3, 1, 1, 1, 1, 1, 2];
+
+      console.log(weekdaydiff[DateTime.local().weekday -1])   
+      
       let doneYesterday = tasks.filter(theTask => {
-        let yesterday = DateTime.local().minus({days: 1}).toISODate();
+        
+        let yesterday = DateTime.local().minus({days: weekdaydiff[DateTime.local().weekday - 1]}).toISODate();
         return theTask.addDate === yesterday && theTask.didit === true
       });
+      console.log(doneYesterday);
       let doingToday = tasks.filter(theTask => {
         let today = DateTime.local().toISODate();
         return theTask.addDate === today
       });
       let output = `1) ${doneYesterday.map(item => item.content).join(", ")}\n2) ${doingToday.map(item => item.content).join(", ")}\n3) `
       console.log(output);
-      clipboardy.write(output);
+      output; 
+      clipboardy.write(output); 
+      output 
     })
 } else if (argv["a"]) {
   console.log("this will show everything at some point. not sure what everything means");
 } else if (argv["_"].length > 0) {
   // add a task
-  tasktools.addTaskToToday(argv["_"].join(" "), !argv["y"]);
+  tasktools.addTaskToToday(argv["_"].join(" "), !argv["y"]); 
 } else {
   //show all tasks
-  tasktools.getTasks()
+  tasktools.getTasks() 
     .then( tasks => {
       let undoneTasks = tasks.filter(theTask => {
         return theTask.didit ==false

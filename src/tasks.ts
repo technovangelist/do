@@ -22,8 +22,13 @@ export const saveTasks =(tasks) => {
 };
 
 export const addTaskToToday = (newtask, today) => {
+  const weekdaydiff = [0, 2, 0, 0, 0, 0, 1, 2];
+  const day = DateTime.local().weekday;
   return new Promise((resolve, reject) => {
-      const dateadded = today ? DateTime.local().toISODate() : DateTime.local().minus({days: 1}).toISODate();
+      const dateadded = today ? DateTime.local().minus({days: weekdaydiff[day]}).toISODate() : DateTime.local().minus({days: weekdaydiff[day] + 1}).toISODate();
+      // const dateadded = taskdate.weekday >= 6 ?  
+
+      // let dateadded = today ? DateTime.local().toISODate() : DateTime.local().minus({days: 1}).toISODate();
       const didit = today ? false : true;
       fa.getDo()
         .then( (tasks) => {
