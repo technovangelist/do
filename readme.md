@@ -26,4 +26,5 @@ If you are using **bash** or **zsh** then `do` does something useful and won't r
 
 # Revision History
 
-**0.1.7** - today on a weekend is now a friday. Yesterday on a Sunday or Monday is now a friday.\
+**0.1.7** - today on a weekend is now a friday. Yesterday on a Sunday or Monday is now a friday.
+**0.1.8** - remove some of the extra debug statements

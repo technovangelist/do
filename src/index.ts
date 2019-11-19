@@ -10,16 +10,14 @@ if (argv["s"]) {
 } else if (argv["r"]) {
   tasktools.getTasks()  
     .then(tasks => {
-      const weekdaydiff = [3, 1, 1, 1, 1, 1, 2];
-
-      console.log(weekdaydiff[DateTime.local().weekday -1])   
+      const weekdaydiff = [3, 1, 1, 1, 1, 1, 2]; 
       
       let doneYesterday = tasks.filter(theTask => {
         
         let yesterday = DateTime.local().minus({days: weekdaydiff[DateTime.local().weekday - 1]}).toISODate();
         return theTask.addDate === yesterday && theTask.didit === true
       });
-      console.log(doneYesterday);
+
       let doingToday = tasks.filter(theTask => {
         let today = DateTime.local().toISODate();
         return theTask.addDate === today;
